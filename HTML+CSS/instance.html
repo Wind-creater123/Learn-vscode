@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tlias 智能学习辅助系统</title>
+  <style>
+    /* 全局 */
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+      color: #222;
+      background: #fafafa;
+    }
+
+    /* 顶部导航栏 */
+    .top-nav {
+      background: #e0e0e0; /* 灰色背景 */
+      display: flex; /* flex弹性布局 */
+      align-items: center;
+      justify-content: space-between; /* 左右两端对齐 */
+      padding: 14px 20px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+    }
+
+    /* 标题样式：醒目、加粗 */
+    .top-nav .brand h1 {
+      color: #111;
+      font-weight: 800; /* 更粗 */
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: 0.2px;
+      margin: 0;
+      /* 设置字体为楷体 */
+      font-family: "KaiTi", serif;
+    }
+
+    /* 在较大屏幕上让标题更醒目 */
+    @media (min-width: 768px) {
+      .top-nav .brand h1 {
+        font-size: 26px;
+      }
+    }
+
+    /* 退出登录链接靠右 */
+    .top-nav .actions a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 600;
+      padding: 6px 8px;
+    }
+    .top-nav .actions a:hover {
+      text-decoration: underline;
+    }
+
+    /* 页面其余占位样式，便于稍后扩展 */
+    main {
+      padding: 20px;
+    }
+    .placeholder {
+      background: #fff;
+      border-radius: 4px;
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+  </style>
+</head>
+<body>
+  <header class="top-nav" role="banner">
+    <div class="brand">
+      <h1>Tlias 智能学习辅助系统</h1>
+    </div>
+
+    <nav class="actions" aria-label="用户操作">
+      <a href="#" id="logout">退出登录</a>
+    </nav>
+  </header>
+
+  <main role="main">
+    <section class="placeholder" id="section-2">
+      <h3>第二部分（占位）</h3>
+      <p>这里是第二部分占位，后续可以放置侧边栏、横幅或搜索等内容。</p>
+    </section>
+
+    <section class="placeholder" id="section-3">
+      <h3>第三部分（占位）</h3>
+      <p>这里是第三部分占位，后续可以放置主要内容区域。</p>
+    </section>
+
+    <section class="placeholder" id="section-4">
+      <h3>第四部分（占位）</h3>
+      <p>这里是第四部分占位，后续可以放置页脚或扩展内容。</p>
+    </section>
+  </main>
+</body>
+</html>
