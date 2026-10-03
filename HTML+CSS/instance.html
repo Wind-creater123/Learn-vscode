@@ -64,6 +64,163 @@
       margin-bottom: 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
+
+    #section-2,
+    #section-3 {
+      padding-top: 10px;
+    }
+
+    #section-2 h3,
+    #section-3 h3 {
+      margin-top: 0;
+    }
+
+    /* 搜索表单（第二部分）样式：水平排列，一行整齐 */
+    .search-form {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap; /* 在窄屏时换行 */
+      margin-top: 5px;
+    }
+
+    .search-form .form-item {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
+
+    /* 隐藏但对屏幕阅读器可见的标签 */
+    .sr-only {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .search-form input[type="text"],
+    .search-form select {
+      padding: 8px 10px;
+      width: 300px;
+      border: 1px solid #dcdcdc;
+      border-radius: 4px;
+      background: #fff;
+      min-width: 160px;
+      box-sizing: border-box;
+    }
+
+    .search-form .actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-basis: 100%;
+      justify-content: flex-start;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: #fff;
+      border-color: #007bff;
+    }
+    .btn-secondary {
+      background: #f5f5f5;
+      color: #333;
+      border-color: #dcdcdc;
+    }
+
+    /* 窄屏时每个控件稍微变窄并换行显示 */
+    @media (max-width: 560px) {
+      .search-form input[type="text"], .search-form select {
+        min-width: 120px;
+      }
+      .search-form {
+        gap: 8px;
+      }
+    }
+
+    /* 表格展示区（第三部分）样式 */
+    .table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-top: 8px;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    table.data-table thead th {
+      text-align: left;
+      padding: 12px 14px;
+      background: #f7f7f9;
+      font-weight: 700;
+      font-size: 13px;
+      color: #333;
+      border-bottom: 1px solid #eef0f2;
+    }
+    table.data-table tbody td {
+      padding: 12px 14px;
+      font-size: 14px;
+      color: #444;
+      border-bottom: 1px solid #f1f2f4;
+      vertical-align: middle;
+    }
+    table.data-table tbody tr:nth-child(even) {
+      background: #fbfbfc;
+    }
+
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 4px;
+    }
+
+    .avatar.small { width: 36px; height: 36px; font-size:12px }
+
+    .cell-ops .btn { padding: 6px 8px; font-size: 13px }
+    .btn-edit { background: #17a2b8; color: #fff; border-color: #17a2b8 }
+    .btn-del { background: #ff6b6b; color: #fff; border-color: #ff6b6b }
+
+    .site-footer {
+      padding: 18px 20px;
+      background: #666;
+      color: #fff;
+      text-align: center;
+      line-height: 1.8;
+    }
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 480px) {
+      table.data-table thead th, table.data-table tbody td { padding: 8px 10px; font-size: 13px }
+      .search-form input[type="text"], .search-form select { width: 160px }
+    }
   </style>
 </head>
 <body>
@@ -78,20 +235,129 @@
   </header>
 
   <main role="main">
-    <section class="placeholder" id="section-2">
-      <h3>第二部分（占位）</h3>
-      <p>这里是第二部分占位，后续可以放置侧边栏、横幅或搜索等内容。</p>
+    <section class="placeholder" id="section-2" aria-labelledby="search-title">
+      <h3 id="search-title">搜索表单</h3>
+
+      <form class="search-form" role="search" method="get" action="#" onsubmit="event.preventDefault();">
+        <!-- 姓名 -->
+        <div class="form-item">
+          <label class="sr-only" for="q-name">姓名</label>
+          <input type="text" id="q-name" name="name" placeholder="姓名" aria-label="姓名" />
+        </div>
+
+        <!-- 性别 -->
+        <div class="form-item">
+          <label class="sr-only" for="q-gender">性别</label>
+          <select id="q-gender" name="gender" aria-label="性别">
+            <option value="">-- 性别 --</option>
+            <option value="male">男</option>
+            <option value="female">女</option>
+          </select>
+        </div>
+
+        <!-- 职位 -->
+        <div class="form-item">
+          <label class="sr-only" for="q-role">职位</label>
+          <select id="q-role" name="role" aria-label="职位">
+            <option value="">-- 职位 --</option>
+            <option value="headteacher">班主任</option>
+            <option value="lecturer">讲师</option>
+            <option value="student-affairs">学工主管</option>
+            <option value="research-lead">教研主管</option>
+            <option value="consultant">咨询师</option>
+          </select>
+        </div>
+
+        <!-- 操作按钮：查询 与 重置 -->
+        <div class="actions" aria-hidden="false">
+          <button type="submit" class="btn btn-primary" title="查询">查询</button>
+          <button type="reset" class="btn btn-secondary" title="重置">重置</button>
+        </div>
+      </form>
     </section>
 
-    <section class="placeholder" id="section-3">
-      <h3>第三部分（占位）</h3>
-      <p>这里是第三部分占位，后续可以放置主要内容区域。</p>
+    <section class="placeholder" id="section-3" aria-labelledby="table-title">
+      <h3 id="table-title">表格展示区</h3>
+
+      <div class="table-wrap">
+        <table class="data-table" role="table" aria-describedby="table-desc">
+          <caption id="table-desc" class="sr-only">展示姓名、性别、头像、职位、入职日期、最后操作时间与操作按钮的列表</caption>
+          <thead>
+            <tr>
+              <th>姓名</th>
+              <th>性别</th>
+              <th>头像</th>
+              <th>职位</th>
+              <th>入职日期</th>
+              <th>最后操作时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-id="1">
+              <td class="cell-name">令狐冲</td>
+              <td>男</td>
+              <td><div class="avatar" style="background:#6c5ce7" title="令狐冲">令狐冲</div></td>
+              <td>讲师</td>
+              <td>2019-03-12</td>
+              <td>2026-10-03 14:22</td>
+              <td class="cell-ops">
+                <button class="btn btn-edit" onclick="editRow(this)" aria-label="编辑 令狐冲">编辑</button>
+                <button class="btn btn-del" onclick="deleteRow(this)" aria-label="删除 令狐冲">删除</button>
+              </td>
+            </tr>
+
+            <tr data-id="2">
+              <td class="cell-name">任盈盈</td>
+              <td>女</td>
+              <td><div class="avatar" style="background:#ff8c42" title="任盈盈">任盈盈</div></td>
+              <td>咨询师</td>
+              <td>2020-07-01</td>
+              <td>2026-09-28 09:14</td>
+              <td class="cell-ops">
+                <button class="btn btn-edit" onclick="editRow(this)" aria-label="编辑 任盈盈">编辑</button>
+                <button class="btn btn-del" onclick="deleteRow(this)" aria-label="删除 任盈盈">删除</button>
+              </td>
+            </tr>
+
+            <tr data-id="3">
+              <td class="cell-name">岳不群</td>
+              <td>男</td>
+              <td><div class="avatar" style="background:#20c997" title="岳不群">岳不群</div></td>
+              <td>教研主管</td>
+              <td>2015-08-15</td>
+              <td>2026-09-30 17:05</td>
+              <td class="cell-ops">
+                <button class="btn btn-edit" onclick="editRow(this)" aria-label="编辑 岳不群">编辑</button>
+                <button class="btn btn-del" onclick="deleteRow(this)" aria-label="删除 岳不群">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <script>
+        // 简单的编辑/删除交互示例：在真实项目中应替换为路由/模态或API调用
+        function editRow(btn) {
+          const tr = btn.closest('tr');
+          const name = tr.querySelector('.cell-name').textContent.trim();
+          alert('编辑：' + name + '\n（此处应打开编辑模态或跳转到编辑页）');
+        }
+        function deleteRow(btn) {
+          const tr = btn.closest('tr');
+          const name = tr.querySelector('.cell-name').textContent.trim();
+          if (confirm('确认删除 ' + name + ' 吗？')) {
+            tr.parentNode.removeChild(tr);
+          }
+        }
+      </script>
     </section>
 
-    <section class="placeholder" id="section-4">
-      <h3>第四部分（占位）</h3>
-      <p>这里是第四部分占位，后续可以放置页脚或扩展内容。</p>
-    </section>
   </main>
+
+  <footer class="site-footer">
+    <p>江苏传智播客教育科技股份有限公司</p>
+    <p>版权所有 Copyright 2006-2024 All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
