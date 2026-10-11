@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        //1.声明变量
+        let a=10;
+        a="Hello";
+        alert(a);
+        a=true;
+        alert(a);
+
+        //2.声明常量
+        const PI=3.14;
+        console.log(PI);//输出到控制台
+        document.write(PI);//输出到 body 区域
+    </script>
+    <script>
+        let b= "tom";
+        let age=18;
+
+        console.log("name:"+b+"\nage:"+age);
+        console.log(`name:${b}\nage:${age}`);
+    </script>
+    <script>
+        //1.具名函数
+        function add1(a,b){
+            return a+b;
+        }
+        let result=add1(10,20);
+        console.log(result);
+
+        //2.匿名函数
+        //2.1 函数表达式
+        let add2=function(a,b){
+            return a+b;
+        }
+        let result2=add2(10,20);
+        console.log(result2);
+        //2.2 箭头函数
+        let add3=(a,b)=>{
+            return a+b;
+        }
+        let result3=add3(10,20);
+        console.log(result3);
+    </script>
+    <script>
+        //1.自定义对象
+        let user={
+            name:"tom",
+            age:18,
+            sayHello:function(){
+                console.log("hello");
+            }
+        }
+        console.log(user.name);
+        user.sayHello();
+    </script>
+    <script>
+        let person={
+            name:"tom",
+            age:18,
+            gender:"male"
+        }
+        alert(JSON.stringify(person));
+
+        let personJSON='{"name":"tom","age":18,"gender":"male"}';
+        alert(JSON.parse(personJSON).name);
+    </script>
+</body>
+</html>
