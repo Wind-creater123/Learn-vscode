@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title1">11111</h1>
+    <h1>22222</h1>
+    <h1>33333</h1>
+
+    <script>
+        let title1 = document.querySelector('#title1');
+        title1.innerHTML ="修改后的内容";
+
+        let titleArr=document.querySelectorAll('h1');
+        titleArr[0].innerHTML="再次修改的内容";
+    </script>
+</body>
+</html>
