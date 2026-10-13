@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        //方法1
+        axios({
+            url:'?',
+            method: 'get'
+        }).then((res) =>{
+            console.log(res.data);
+        }).catch((err) =>{
+            console.log(err);
+        })
+
+        //方法2
+        axios.get('?').then((res) =>{
+            console.log(res.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
+
+        //方法3
+        let result = await axios.get('?');
+        console.log(result.data);
+
+        //钩子方法
+        mounted(){
+
+        }
+    </script>
+</body>
+</html>
